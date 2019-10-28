@@ -1,0 +1,6 @@
+[MESSAGES CONTROL]
+disable=missing-docstring, line-too-long, no-self-use, too-few-public-methods, no-member, duplicate-code, too-many-arguments, unnecessary-lambda, too-many-instance-attributes, fixme, too-many-public-methods, too-many-locals, abstract-method
+# no-member disable until release of astroid-2.2.0
+
+[BASIC]
+#good-names=id
