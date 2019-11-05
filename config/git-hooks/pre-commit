@@ -11,7 +11,7 @@ if [ -n "$PYTHON_FILES" ]; then
     dev black_formatter $PYTHON_FILES
 fi
 
-dev focused_specs && dev python_linter && dev local_tests
+dev focused_specs && dev linter && dev local_tests
 RETCODE=$?
 
 sleep 1
