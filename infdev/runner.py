@@ -16,7 +16,7 @@ SCRIPT_TYPES_PATH = {
     'integration_tests': "scripts/integration_tests.sh",
     'functional_tests': "scripts/functional_tests.sh",
     'acceptance_tests': "scripts/acceptance_tests.sh",
-    'all_local_tests': "scripts/all_local_tests.sh",
+    'local_tests': "scripts/local_tests.sh",
     'all_tests': "scripts/all_tests.sh",
 }
 
