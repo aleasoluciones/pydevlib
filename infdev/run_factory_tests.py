@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import sys
 import types
 import importlib
@@ -10,7 +8,7 @@ import re
 from datetime import datetime
 
 
-TOTALS_TESTS_PASSED = 0
+TOTAL_TESTS_PASSED = 0
 LAST_CALL = None
 GREEN_COLOR = "\033[0;32m"
 WHITE_COLOR = "\033[0;39m"
@@ -18,7 +16,7 @@ RED_COLOR = "\033[91m"
 
 
 def find_and_call_functions_from():
-    global TOTALS_TESTS_PASSED
+    global TOTAL_TESTS_PASSED
     global LAST_CALL
 
     factories = []
@@ -39,8 +37,25 @@ def find_and_call_functions_from():
             if callable(element):
                 if isinstance(element, types.FunctionType) and not element_name.startswith('__'):
                     LAST_CALL = "===> Exception in Factory file: {} Testing to call: {}".format(factory_file, element_name)
-                    element()
-                    TOTALS_TESTS_PASSED += 1
+                    # -----------------------------------------------
+                    # Check if functions has none optional arguments
+                    # -----------------------------------------------
+                    number_of_arguments = element.__code__.co_argcount
+                    all_arguments_and_local_variables_names = element.__code__.co_varnames
+                    arguments_with_default_value = element.__defaults__
+                    if arguments_with_default_value is not None:
+                        required_arguments = all_arguments_and_local_variables_names[:number_of_arguments - len(arguments_with_default_value)]
+                        if len(required_arguments) > 0:
+                            aux = {}
+                            for x in required_arguments:
+                                aux[x] = 'irrelevant_argument_value'
+                            element(**aux)
+                        else:
+                            element()
+                    else:
+                        element()
+                    # ----------------------------------
+                    TOTAL_TESTS_PASSED += 1
                     sys.stdout.write(GREEN_COLOR)
                     sys.stdout.write(".")
                     sys.stdout.write(WHITE_COLOR)
@@ -48,7 +63,7 @@ def find_and_call_functions_from():
     elapsed_time = datetime.utcnow() - initial_time
     print('')
     print(GREEN_COLOR)
-    print("{} examples ran in {:.4f} seconds{}".format(TOTALS_TESTS_PASSED, elapsed_time.total_seconds(), WHITE_COLOR))
+    print("{} examples ran in {:.4f} seconds{}".format(TOTAL_TESTS_PASSED, elapsed_time.total_seconds(), WHITE_COLOR))
 
 
 def _import_module(module_name):
@@ -61,7 +76,7 @@ def _import_module(module_name):
     # https://stackoverflow.com/questions/4821104/python-dynamic-instantiation-from-string-name-of-a-class-in-dynamically-imported
 
 
-def run():
+if __name__ == '__main__':
     try:
         find_and_call_functions_from()
         sys.exit(0)
@@ -74,10 +89,3 @@ def run():
         print(WHITE_COLOR)
         print('')
         sys.exit(1)
-
-
-if __name__ == '__main__':
-    try:
-        run()
-    except Exception as exc:
-        print(traceback.print_exc())
