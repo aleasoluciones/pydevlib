@@ -7,7 +7,8 @@ fi
 
 PYTHON_FILES=$(git status --porcelain | grep "^[MCA]" | awk '$1~/^[MCA]/ && $2~/.py$/ {print $2}')
 if [ -n "$PYTHON_FILES" ]; then
-    dev yapf_formatter $PYTHON_FILES
+    # dev yapf_formatter $PYTHON_FILES
+    dev black_formatter $PYTHON_FILES
 fi
 
 dev focused_specs && dev python_linter && dev local_tests
