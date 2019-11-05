@@ -23,9 +23,14 @@ def find_and_call_functions_from():
     current_working_directory = os.getcwd()
 
     for root, _, filenames in os.walk(current_working_directory):
-        for filename in fnmatch.filter(filenames, '*factory.py'):
-            factory_relative_path = ".{}".format(os.path.join(root, filename).replace(current_working_directory, ''))
-            if 'src' not in factory_relative_path and 'build' not in factory_relative_path:
+        for filename in fnmatch.filter(filenames, "*factory.py"):
+            factory_relative_path = ".{}".format(
+                os.path.join(root, filename).replace(current_working_directory, "")
+            )
+            if (
+                "src" not in factory_relative_path
+                and "build" not in factory_relative_path
+            ):
                 factories.append(factory_relative_path)
 
     initial_time = datetime.utcnow()
@@ -35,20 +40,28 @@ def find_and_call_functions_from():
         for element_name in dir(a_factory):
             element = getattr(a_factory, element_name)
             if callable(element):
-                if isinstance(element, types.FunctionType) and not element_name.startswith('__'):
-                    LAST_CALL = "===> Exception in Factory file: {} Testing to call: {}".format(factory_file, element_name)
+                if isinstance(
+                    element, types.FunctionType
+                ) and not element_name.startswith("__"):
+                    LAST_CALL = "===> Exception in Factory file: {} Testing to call: {}".format(
+                        factory_file, element_name
+                    )
                     # -----------------------------------------------
                     # Check if functions has none optional arguments
                     # -----------------------------------------------
                     number_of_arguments = element.__code__.co_argcount
-                    all_arguments_and_local_variables_names = element.__code__.co_varnames
+                    all_arguments_and_local_variables_names = (
+                        element.__code__.co_varnames
+                    )
                     arguments_with_default_value = element.__defaults__
                     if arguments_with_default_value is not None:
-                        required_arguments = all_arguments_and_local_variables_names[:number_of_arguments - len(arguments_with_default_value)]
+                        required_arguments = all_arguments_and_local_variables_names[
+                            : number_of_arguments - len(arguments_with_default_value)
+                        ]
                         if len(required_arguments) > 0:
                             aux = {}
                             for x in required_arguments:
-                                aux[x] = 'irrelevant_argument_value'
+                                aux[x] = "irrelevant_argument_value"
                             element(**aux)
                         else:
                             element()
@@ -61,31 +74,39 @@ def find_and_call_functions_from():
                     sys.stdout.write(WHITE_COLOR)
 
     elapsed_time = datetime.utcnow() - initial_time
-    print('')
+    print("")
     print(GREEN_COLOR)
-    print("{} examples ran in {:.4f} seconds{}".format(TOTAL_TESTS_PASSED, elapsed_time.total_seconds(), WHITE_COLOR))
+    print(
+        "{} examples ran in {:.4f} seconds{}".format(
+            TOTAL_TESTS_PASSED, elapsed_time.total_seconds(), WHITE_COLOR
+        )
+    )
 
 
 def _import_module(module_name):
     try:
-        file_to_import = re.sub('\./.+?/', '', module_name).replace('/', '.').replace('.py', '')
+        file_to_import = (
+            re.sub("\./.+?/", "", module_name).replace("/", ".").replace(".py", "")
+        )
         return importlib.import_module(file_to_import)
     except Exception:
-        file_to_import = re.sub('\./', '', module_name).replace('/', '.').replace('.py', '')
+        file_to_import = (
+            re.sub("\./", "", module_name).replace("/", ".").replace(".py", "")
+        )
         return importlib.import_module(file_to_import)
     # https://stackoverflow.com/questions/4821104/python-dynamic-instantiation-from-string-name-of-a-class-in-dynamically-imported
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         find_and_call_functions_from()
         sys.exit(0)
     except Exception as exc:
-        print('')
+        print("")
         print(RED_COLOR)
         print("{} -> {}".format(LAST_CALL, exc))
         print()
         traceback.print_exc()
         print(WHITE_COLOR)
-        print('')
+        print("")
         sys.exit(1)
