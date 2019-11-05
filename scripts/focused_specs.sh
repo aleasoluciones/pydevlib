@@ -9,7 +9,7 @@ echo "Searching for Focused Specs"
 echo "----------------------------------------------------------------------"
 echo
 
-FOCUSED_SPECS=$(grep -rn --exclude-dir=dev 'with fit\|with fcontext\|with fdescribe\|with fdescription' .)
+FOCUSED_SPECS=$(grep -rn --exclude-dir={$scripts_path,scripts} --exclude=search_focused_specs.sh 'with fit\|with fcontext\|with fdescribe\|with fdescription' .)
 if [ -z "$FOCUSED_SPECS" ]; then
     info "Focused specs NOT found"
     FOCUS_RETCODE=0
