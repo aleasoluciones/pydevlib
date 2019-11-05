@@ -10,7 +10,7 @@ SCRIPT_TYPES_PATH = {
     'linter': "scripts/python_linter.sh",
     'yapf_formatter': "scripts/python_yapf_formatter.sh",
     'black_formatter': "scripts/python_black_formatter.sh",
-    'search_focused_specs': "scripts/search_focused_specs.sh",
+    'focused_specs': "scripts/search_focused_specs.sh",
     'unit_tests': "scripts/unit_tests.sh",
     'factory_tests': "scripts/factory_tests.sh",
     'integration_tests': "scripts/integration_tests.sh",
