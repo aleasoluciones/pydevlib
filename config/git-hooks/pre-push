@@ -2,10 +2,10 @@
 
 if [ -z "$VIRTUAL_ENV" ]; then
     source /usr/local/bin/virtualenvwrapper.sh
-    workon current_project
+    workon $(basename $(pwd))
 fi
 
-scripts/search_for_focused_specs.sh && scripts/python_linter.sh && scripts/all_local_tests.sh
+dev -t search_focused_specs && dev -t all_tests
 RETCODE=$?
 
 sleep 1

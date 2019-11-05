@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z "$VIRTUAL_ENV" ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+    workon $(basename $(pwd))
+fi
+
+PYTHON_FILES=$(git status --porcelain | grep "^[MCA]" | awk '$1~/^[MCA]/ && $2~/.py$/ {print $2}')
+if [ -n "$PYTHON_FILES" ]; then
+    dev yapf_formatter $PYTHON_FILES
+fi
+
+dev search_focused_specs && dev python_linter && dev all_tests
+RETCODE=$?
+
+sleep 1
+exit $RETCODE
