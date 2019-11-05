@@ -9,7 +9,7 @@ echo "----------------------------------------------------------------------"
 echo
 
 if [ -z "$1" ]; then
-    yapf -ir .
+    yapf -ir --style config/.style.yapf .
 else
-    yapf -ir $1
+    yapf -ir --style config/.style.yapf $1
 fi
