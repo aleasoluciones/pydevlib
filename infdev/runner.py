@@ -51,7 +51,7 @@ def main():
 
     try:
         script_type = SCRIPT_TYPES_PATH[args.run]
-        call([script_type, scripts_path, config_path, *unknown_args[1:]])
+        exit(call([script_type, scripts_path, config_path, *unknown_args[1:]]))
     except KeyError:
         print("There's no such script to run :( The available scripts list is:\n")
         for script_type in SCRIPT_TYPES_PATH.keys():
@@ -64,3 +64,4 @@ if __name__ == "__main__":
         main()
     except Exception:
         print(traceback.print_exc())
+        exit(1)
