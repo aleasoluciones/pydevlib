@@ -13,4 +13,3 @@ if [ -z "$1" ]; then
 else
     black -t py37 $1
 fi
-
