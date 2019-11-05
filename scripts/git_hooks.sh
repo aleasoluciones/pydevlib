@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source scripts/shared_utils/output.sh
+scripts_path=$1
+config_path=$2
+source $scripts_path/shared_utils/output.sh
 
 echo
 echo "----------------------------------------------------------------------"
@@ -10,7 +12,7 @@ echo
 
 echo "Current project: $(info $(basename $(pwd)))"
 echo
-for hook in config/git-hooks/*; do
+for hook in $config_path/git-hooks/*; do
   echo "--> Copying hook \"$(warning $(basename $hook))\""
   cp $hook .git/hooks/$(basename $hook)
 done

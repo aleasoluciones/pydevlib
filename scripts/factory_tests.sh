@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source scripts/shared_utils/clean_pyc_files.sh
+scripts_path=$1
+source $scripts_path/shared_utils/clean_pyc_files.sh
 
 echo
 echo "----------------------------------------------------------------------"
@@ -8,4 +9,4 @@ echo "Running Factory tests"
 echo "----------------------------------------------------------------------"
 echo
 
-python infdev/run_factory_tests.py
+python $scripts_path/../infdev/run_factory_tests.py
