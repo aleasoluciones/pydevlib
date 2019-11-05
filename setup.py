@@ -4,7 +4,7 @@ setup(
     name="infdev",
     version="0.0.1",
     author="Bifer Team",
-    description="Development tools for Bifer projects",
+    description="Development tools for Alea Soluciones projects",
     platforms="Linux",
     packages=find_packages(exclude=["tests", "specs", "integration_specs", "functional_specs"]),
     install_requires=[
@@ -20,7 +20,8 @@ setup(
         'coverage==3.7.1',
         'pylint==2.4.3',
         'yapf==0.25.0',
+        'black==19.10b0',
     ],
     entry_points={
-        'console_scripts': ['run_dev_script = infdev.runner:main'],
+        'console_scripts': ['dev = infdev.runner:main'],
     })

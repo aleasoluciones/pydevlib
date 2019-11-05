@@ -10,3 +10,4 @@ deepdiff==3.3.0
 coverage==3.7.1
 pylint==2.4.3
 yapf==0.25.0
+black==19.10b0
