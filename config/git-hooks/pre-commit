@@ -10,7 +10,7 @@ if [ -n "$PYTHON_FILES" ]; then
     dev yapf_formatter $PYTHON_FILES
 fi
 
-dev search_focused_specs && dev python_linter && dev all_tests
+dev focused_specs && dev python_linter && dev local_tests
 RETCODE=$?
 
 sleep 1
