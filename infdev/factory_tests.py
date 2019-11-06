@@ -28,7 +28,10 @@ def find_and_call_functions_from():
             factory_relative_path = ".{}".format(
                 os.path.join(root, filename).replace(current_working_directory, "")
             )
-            if ("src" not in factory_relative_path and "build" not in factory_relative_path):
+            if (
+                "src" not in factory_relative_path
+                and "build" not in factory_relative_path
+            ):
                 factories.append(factory_relative_path)
 
     initial_time = datetime.utcnow()
@@ -37,8 +40,11 @@ def find_and_call_functions_from():
         a_factory = _import_module(factory_file)
         for element_name in dir(a_factory):
             element = getattr(a_factory, element_name)
+
             if callable(element):
-                if isinstance(element, types.FunctionType) and not element_name.startswith("__"):
+                if isinstance(
+                    element, types.FunctionType
+                ) and not element_name.startswith("__"):
                     LAST_CALL = "===> Exception in Factory file: {} Testing to call: {}".format(
                         factory_file, element_name
                     )

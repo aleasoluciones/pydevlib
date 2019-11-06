@@ -9,4 +9,4 @@ echo "Running Factory tests"
 echo "----------------------------------------------------------------------"
 echo
 
-python $scripts_path/../infdev/run_factory_tests.py
+python $1/infdev/factory_tests.py
