@@ -59,6 +59,17 @@ def main():
         print("")
 
 
+def mambo():
+    parser = argparse.ArgumentParser()
+    args, unknown_args = parser.parse_known_args()
+    script_type = f"{scripts_path}/mambo.sh"
+    try:
+        exit(call([script_type, *unknown_args[1:]]))
+    except Exception:
+        print(traceback.print_exc())
+        exit(1)
+
+
 if __name__ == "__main__":
     try:
         main()

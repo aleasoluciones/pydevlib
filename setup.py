@@ -25,5 +25,7 @@ setup(
         "yapf==0.25.0",
         "black==19.10b0",
     ],
-    entry_points={"console_scripts": ["dev = infdev.runner:main"],},
+    entry_points={
+        "console_scripts": ["dev = infdev.runner:main", "mambo = infdev.runner:mambo"]
+    },
 )
