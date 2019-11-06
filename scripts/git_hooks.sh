@@ -1,7 +1,7 @@
 #!/bin/bash
 
-scripts_path=$1
-config_path=$2
+scripts_path="$1/scripts"
+config_path="$1/config"
 source $scripts_path/shared_utils/output.sh
 
 echo

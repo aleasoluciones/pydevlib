@@ -45,7 +45,7 @@ function exit_on_fatal_or_error(){
     fatals_and_errors=$(echo "$output" | grep -E "[EF][0-9]{4}")
     echo "${fatals_and_errors}"
     force_exit $EXIT_CODE
-    fi
+  fi
 
   echo "$output"
   echo

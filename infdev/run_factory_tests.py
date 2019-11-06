@@ -16,6 +16,7 @@ RED_COLOR = "\033[91m"
 
 
 def find_and_call_functions_from():
+    # pylint: disable=global-statement
     global TOTAL_TESTS_PASSED
     global LAST_CALL
 
@@ -27,10 +28,7 @@ def find_and_call_functions_from():
             factory_relative_path = ".{}".format(
                 os.path.join(root, filename).replace(current_working_directory, "")
             )
-            if (
-                "src" not in factory_relative_path
-                and "build" not in factory_relative_path
-            ):
+            if ("src" not in factory_relative_path and "build" not in factory_relative_path):
                 factories.append(factory_relative_path)
 
     initial_time = datetime.utcnow()
@@ -40,9 +38,7 @@ def find_and_call_functions_from():
         for element_name in dir(a_factory):
             element = getattr(a_factory, element_name)
             if callable(element):
-                if isinstance(
-                    element, types.FunctionType
-                ) and not element_name.startswith("__"):
+                if isinstance(element, types.FunctionType) and not element_name.startswith("__"):
                     LAST_CALL = "===> Exception in Factory file: {} Testing to call: {}".format(
                         factory_file, element_name
                     )
@@ -60,8 +56,8 @@ def find_and_call_functions_from():
                         ]
                         if len(required_arguments) > 0:
                             aux = {}
-                            for x in required_arguments:
-                                aux[x] = "irrelevant_argument_value"
+                            for required_argument in required_arguments:
+                                aux[required_argument] = "irrelevant_argument_value"
                             element(**aux)
                         else:
                             element()
@@ -84,20 +80,22 @@ def find_and_call_functions_from():
 
 
 def _import_module(module_name):
+    # pylint: disable=broad-except
     try:
         file_to_import = (
-            re.sub("\./.+?/", "", module_name).replace("/", ".").replace(".py", "")
+            re.sub(r"\./.+?/", "", module_name).replace("/", ".").replace(".py", "")
         )
         return importlib.import_module(file_to_import)
     except Exception:
         file_to_import = (
-            re.sub("\./", "", module_name).replace("/", ".").replace(".py", "")
+            re.sub(r"\./", "", module_name).replace("/", ".").replace(".py", "")
         )
         return importlib.import_module(file_to_import)
     # https://stackoverflow.com/questions/4821104/python-dynamic-instantiation-from-string-name-of-a-class-in-dynamically-imported
 
 
 if __name__ == "__main__":
+    # pylint: disable=broad-except
     try:
         find_and_call_functions_from()
         sys.exit(0)

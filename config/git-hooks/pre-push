@@ -5,7 +5,7 @@ if [ -z "$VIRTUAL_ENV" ]; then
     workon $(basename $(pwd))
 fi
 
-dev focused_specs && dev all_tests
+focused_specs && all_tests
 RETCODE=$?
 
 sleep 1

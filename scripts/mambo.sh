@@ -1,7 +1,7 @@
 #!/bin/bash
 
 clear
-mamba -f documentation $1;
+mamba -f documentation $@;
 
 MAMBA_RETCODE=$?
 exit $MAMBA_RETCODE

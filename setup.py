@@ -26,6 +26,21 @@ setup(
         "black==19.10b0",
     ],
     entry_points={
-        "console_scripts": ["dev = infdev.runner:main", "mambo = infdev.runner:mambo"]
+        "console_scripts": [
+            "infdev = infdev.runner:infdev",
+            "mambo = infdev.runner:mambo",
+            "git_hooks = infdev.runner:git_hooks",
+            "linter = infdev.runner:linter",
+            "yapf_formatter = infdev.runner:yapf_formatter",
+            "black_formatter = infdev.runner:black_formatter",
+            "focused_specs = infdev.runner:focused_specs",
+            "unit_tests = infdev.runner:unit_tests",
+            "integration_tests = infdev.runner:integration_tests",
+            "factory_tests = infdev.runner:factory_tests",
+            "functional_tests = infdev.runner:functional_tests",
+            "acceptance_tests = infdev.runner:acceptance_tests",
+            "local_tests = infdev.runner:local_tests",
+            "all_tests = infdev.runner:all_tests",
+        ]
     },
 )

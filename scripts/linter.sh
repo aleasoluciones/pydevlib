@@ -1,7 +1,7 @@
 #!/bin/bash
 
-scripts_path=$1
-config_path=$2
+scripts_path="$1/scripts"
+config_path="$1/config"
 source $scripts_path/shared_utils/output.sh
 
 echo
@@ -12,11 +12,11 @@ echo
 
 EXIT_CODE=0
 
-if [ -z "$3"  ]; then
+if [ -z "$2"  ]; then
     files=$(find . -type f -name "*.py" | grep -v 'spec')
     if [[ $files ]]; then
         info "Analizing PRODUCTION code..."
-        
+
         output=$(pylint --rcfile $config_path/.pylintrc ${files})
         retcode=$?
         exit_on_fatal_or_error $retcode "$output"
@@ -36,7 +36,7 @@ if [ -z "$3"  ]; then
         echo
     fi
 
-elif [ $3 = "staged" ]; then
+elif [ $2 = "staged" ]; then
   # https://git-scm.com/docs/git-status#_output
   # M = modified A = added D = deleted R = renamed C = copied U = updated but unmerged
   staged_files=$(git status --porcelain | grep "^[MCA]" | awk '$1~/^[MCA]/ && $2~/.py$/ {print $2}')
