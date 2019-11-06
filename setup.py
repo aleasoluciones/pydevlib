@@ -10,6 +10,7 @@ setup(
         exclude=["tests", "specs", "integration_specs", "functional_specs"]
     ),
     install_requires=[
+        "six==1.12",
         "mamba==0.10",
         "expects==0.9.0",
         "doublex==1.9.1",
