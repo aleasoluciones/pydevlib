@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "HOLA"
 clear
 mamba -f documentation $1;
 
