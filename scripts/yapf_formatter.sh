@@ -11,7 +11,7 @@ echo "----------------------------------------------------------------------"
 echo
 
 if [ -z "$3" ]; then
-    yapf -r --style $config_path/.style.yapf .
+    yapf -ir --style $config_path/.style.yapf .
 else
-    yapf -r --style $config_path/.style.yapf $3
+    yapf -ir --style $config_path/.style.yapf $@
 fi

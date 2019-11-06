@@ -13,5 +13,5 @@ echo
 if [ -z "$3" ]; then
     black -t py37 .
 else
-    black -t py37 $3
+    black -t py37 $@
 fi

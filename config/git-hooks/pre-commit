@@ -5,9 +5,9 @@ if [ -z "$VIRTUAL_ENV" ]; then
     workon $(basename $(pwd))
 fi
 
-PYTHON_FILES=$(git status --porcelain | grep "^[MCA]" | awk '$1~/^[MCA]/ && $2~/.py$/ {print $2}')
+PYTHON_FILES=$(git status --porcelain | grep "^[MCA]" | awk '$1~/^[MCA]/ && $2~/.py$/ {print $2}' | paste -sd " " -)
 if [ -n "$PYTHON_FILES" ]; then
-    # dev yapf_formatter $PYTHON_FILES
+    #dev yapf_formatter $PYTHON_FILES
     dev black_formatter $PYTHON_FILES
 fi
 
