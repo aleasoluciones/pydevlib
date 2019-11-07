@@ -25,9 +25,7 @@ def find_and_call_functions_from():
 
     for root, _, filenames in os.walk(current_working_directory):
         for filename in fnmatch.filter(filenames, "*factory.py"):
-            factory_relative_path = ".{}".format(
-                os.path.join(root, filename).replace(current_working_directory, "")
-            )
+            factory_relative_path = f".{os.path.join(root, filename).replace(current_working_directory, '')}"
             if (
                 "src" not in factory_relative_path
                 and "build" not in factory_relative_path
@@ -45,30 +43,9 @@ def find_and_call_functions_from():
                 if isinstance(
                     element, types.FunctionType
                 ) and not element_name.startswith("__"):
-                    LAST_CALL = "===> Exception in Factory file: {} Testing to call: {}".format(
-                        factory_file, element_name
-                    )
-                    # -----------------------------------------------
-                    # Check if functions has none optional arguments
-                    # -----------------------------------------------
-                    number_of_arguments = element.__code__.co_argcount
-                    all_arguments_and_local_variables_names = (
-                        element.__code__.co_varnames
-                    )
-                    arguments_with_default_value = element.__defaults__
-                    if arguments_with_default_value is not None:
-                        required_arguments = all_arguments_and_local_variables_names[
-                            : number_of_arguments - len(arguments_with_default_value)
-                        ]
-                        if len(required_arguments) > 0:
-                            aux = {}
-                            for required_argument in required_arguments:
-                                aux[required_argument] = "irrelevant_argument_value"
-                            element(**aux)
-                        else:
-                            element()
-                    else:
-                        element()
+                    LAST_CALL = f"===> Exception in Factory file: {factory_file} Testing to call: {element_name}"
+                    _check_function_arguments(element)
+
                     # ----------------------------------
                     TOTAL_TESTS_PASSED += 1
                     sys.stdout.write(GREEN_COLOR)
@@ -79,10 +56,32 @@ def find_and_call_functions_from():
     print("")
     print(GREEN_COLOR)
     print(
-        "{} examples ran in {:.4f} seconds{}".format(
-            TOTAL_TESTS_PASSED, elapsed_time.total_seconds(), WHITE_COLOR
-        )
+        f"{TOTAL_TESTS_PASSED} examples ran in {elapsed_time.total_seconds():.4f} seconds{WHITE_COLOR}"
     )
+
+
+def _check_function_arguments(element):
+    # ----------------------------------------------
+    # Check if functions has none optional arguments
+    # ----------------------------------------------
+    number_of_arguments = element.__code__.co_argcount
+    all_arguments_and_local_variables_names = element.__code__.co_varnames
+    arguments_with_default_value = element.__defaults__
+    if arguments_with_default_value is not None:
+        required_arguments = all_arguments_and_local_variables_names[
+            : number_of_arguments - len(arguments_with_default_value)
+        ]
+        if required_arguments:
+            element(
+                **{
+                    required_argument: "irrelevant_argument_value"
+                    for required_argument in required_arguments
+                }
+            )
+        else:
+            element()
+    else:
+        element()
 
 
 def _import_module(module_name):
@@ -108,7 +107,7 @@ if __name__ == "__main__":
     except Exception as exc:
         print("")
         print(RED_COLOR)
-        print("{} -> {}".format(LAST_CALL, exc))
+        print(f"{LAST_CALL} -> {exc}")
         print()
         traceback.print_exc()
         print(WHITE_COLOR)

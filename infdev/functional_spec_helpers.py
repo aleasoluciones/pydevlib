@@ -60,7 +60,7 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
         if response.error:
             fields = ["code", "error", "effective_url", "body"]
             for field in fields:
-                print("{}: {}".format(field, getattr(response, field)))
+                print(f"{field}: {getattr(response, field}")
 
     def fetch(
         self,
@@ -131,7 +131,7 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
         self.user_service.remove_user(username)
 
     def _build_credentials(self, username, password):
-        credentials = "{}:{}".format(username, password)
+        credentials = f"{username}:{password}"
         encoded_credentials = base64.b64encode(credentials)
         return encoded_credentials
 
@@ -144,7 +144,7 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
         network=API_USER_NETWORKS,
     ):
         for url in urls:
-            endpoint = "/{}/{}".format(network, url)
+            endpoint = f"/{network}/{url}"
             response = self.fetch(url=endpoint, method=method, body=body)
             self._handle_response(response, allowed_status_codes)
 
@@ -152,8 +152,6 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
         if response.code < 300:
             return
         if response.code == 405 or response.code not in allowed_status_codes:
-            error_text = "Response error url: {} code: {} error: {}".format(
-                response.effective_url, response.code, response.error
-            )
+            error_text = f"Response error url: {response.effective_url} code: {response.code} error: {response.error}"
             print("Error", error_text)
             raise Exception(error_text)
