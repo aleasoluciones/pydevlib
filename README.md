@@ -5,7 +5,8 @@ Alea Soluciones development utils & scripts meant to be used in Python projects
 
 ## Requirements
 
-Works on Python 3.7+
+You'll need bash as your shell and it works on Python 3.7+
+
 
 ## Install
 
