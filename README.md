@@ -26,7 +26,7 @@ git_hooks -> Install pre-commit and pre-push git hooks
 linter -> Run pylint for production and specs code
 yapf_formatter -> Run YAPF to format python code
 black_formatter -> Run Black to format python code
-focused_specs -> Search focused specs across the code
+focused_specs -> Search for focused specs across the code
 unit_tests -> Run unit tests
 factory_tests -> Run factory tests
 integration_tests -> Run integration tests
