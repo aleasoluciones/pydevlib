@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -e
 
 scripts_path="$1/scripts"
 config_path="$1/config"
