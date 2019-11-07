@@ -44,7 +44,7 @@ def find_and_call_functions_from():
                     element, types.FunctionType
                 ) and not element_name.startswith("__"):
                     LAST_CALL = f"===> Exception in Factory file: {factory_file} Testing to call: {element_name}"
-                    _check_function_arguments(element)
+                    _check_function_arguments_and_call(element)
 
                     # ----------------------------------
                     TOTAL_TESTS_PASSED += 1
@@ -53,14 +53,13 @@ def find_and_call_functions_from():
                     sys.stdout.write(WHITE_COLOR)
 
     elapsed_time = datetime.utcnow() - initial_time
-    print("")
-    print(GREEN_COLOR)
+    print(f"\n{GREEN_COLOR}")
     print(
         f"{TOTAL_TESTS_PASSED} examples ran in {elapsed_time.total_seconds():.4f} seconds{WHITE_COLOR}"
     )
 
 
-def _check_function_arguments(element):
+def _check_function_arguments_and_call(element):
     # ----------------------------------------------
     # Check if functions has none optional arguments
     # ----------------------------------------------
@@ -105,11 +104,8 @@ if __name__ == "__main__":
         find_and_call_functions_from()
         sys.exit(0)
     except Exception as exc:
-        print("")
-        print(RED_COLOR)
-        print(f"{LAST_CALL} -> {exc}")
-        print()
+        print(f"\n{RED_COLOR}")
+        print(f"{LAST_CALL} -> {exc}\n")
         traceback.print_exc()
-        print(WHITE_COLOR)
-        print("")
+        print(f"{WHITE_COLOR}\n")
         sys.exit(1)
