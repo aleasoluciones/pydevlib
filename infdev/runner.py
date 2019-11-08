@@ -31,9 +31,9 @@ def run(script_name, without_paths=False):
     script_type = f"{MODULE_BASE_PATH}/scripts/{script_name}.sh"
     try:
         if without_paths:
-            sys.exit(call([script_type, *unknown_args[1:]]))
+            sys.exit(call([script_type, *unknown_args]))
         else:
-            sys.exit(call([script_type, MODULE_BASE_PATH, *unknown_args[1:]]))
+            sys.exit(call([script_type, MODULE_BASE_PATH, *unknown_args]))
     except Exception:
         print(traceback.print_exc())
         sys.exit(1)
