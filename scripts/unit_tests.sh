@@ -19,7 +19,6 @@ if [ -z "$2"  ]; then
     FORMATTER="progress"
     mamba -f $FORMATTER $SPEC_FILES;
 elif [ $2 = "doc" ]; then
-    echo "HOLA"
     FORMATTER="documentation"
     mamba -f $FORMATTER $SPEC_FILES;
 elif [ $2 = "debug" ]; then
