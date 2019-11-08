@@ -33,7 +33,7 @@ integration_tests -> Run integration tests
 functional_tests -> Run functional tests
 acceptance_tests -> Run acceptance tests
 local_tests -> Run all local tests (unit, factory and integration tests)
-all_tests -> Run all tests but acceptance tests (unit, factory, integration and functional tests
+all_tests -> Run all tests but acceptance tests (unit, factory, integration and functional tests)
 ```
 
 The way you can use the commands is simply like this:
@@ -49,4 +49,7 @@ For scripts that may accept arguments, you can do:
 
 ### TODO
 
+- Choose a better name for the project
+- Document virtualenv path to be searched is the default repository name
 - Document special script cases
+- Unify functional test across projects
