@@ -6,8 +6,8 @@ if (( $(uname) == 'Darwin' )); then
     COLOR_FOR_BASH=\\x1B
 fi
 
-GREEN="$COLOR_FOR_BASH[92m"
-YELLOW="$COLOR_FOR_BASH[93m"
+GREEN="$COLOR_FOR_BASH[32m"
+YELLOW="$COLOR_FOR_BASH[33m"
 RED="$COLOR_FOR_BASH[31m"
 NO_COLOR='\033[0m' # No Color
 
