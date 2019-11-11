@@ -1,11 +1,29 @@
+import json
 from functools import wraps
 from deepdiff import DeepDiff
 
+from expects.matchers import Matcher
 
+
+# Debugging utils
 def printdiff(obj1, obj2):
     print(DeepDiff(obj1, obj2))
 
 
+# Custom expect matchers
+class equal_json_dict(Matcher):
+    def __init__(self, expected):
+        self._expected = expected
+
+    def _match(self, input_json):
+        input_dict = json.loads(input_json)
+        if input_dict == self._expected:
+            return True, ["json contains the dict"]
+
+        return False, ["json does not contain the dict"]
+
+
+# Fake classes
 class CallOrderAwareFake(object):
     class Decorators(object):
         @classmethod
@@ -35,6 +53,7 @@ class CallOrderAwareFake(object):
             self._call_counter[method_name] = 0
 
 
+# Fake Class Implementantion Example
 class FakeExample(CallOrderAwareFake):
     @CallOrderAwareFake.Decorators.call_order_aware
     def a_method(self, *args, **kwargs):
