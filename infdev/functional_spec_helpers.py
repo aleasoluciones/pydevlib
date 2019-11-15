@@ -66,15 +66,18 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
             headers = {}
         headers.update(self._json_headers())
         body = self._parse_to_json_if_dict(body)
-        response = super(TornadoFunctionalTest, self).fetch(
-            url,
-            method=method,
-            auth_username=auth[0],
-            auth_password=auth[1],
-            body=body,
-            headers=headers,
-            allow_nonstandard_methods=allow_nonstandard_methods,
-        )
+        fetch_options = {
+            "path": url,
+            "method": method,
+            "body": body,
+            "headers": headers,
+            "allow_nonstandard_methods": allow_nonstandard_methods,
+        }
+        if auth:
+            fetch_options.update(
+                {"auth_username": auth[0], "auth_password": auth[1],}
+            )
+        response = super(TornadoFunctionalTest, self).fetch(**fetch_options)
         return response
 
     def _json_headers(self):
