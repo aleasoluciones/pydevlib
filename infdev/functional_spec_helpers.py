@@ -1,13 +1,12 @@
 import logging
+import traceback
 
 from tornado import escape
 from tornado.testing import AsyncHTTPTestCase
 
 
 class TornadoFunctionalTest(AsyncHTTPTestCase):
-    def __init__(
-        self, application, debug=False, **kwargs,
-    ):
+    def __init__(self, application, debug=False, **kwargs):
         super(TornadoFunctionalTest, self).__init__()
 
         self.application = application
@@ -19,7 +18,13 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
         logging.getLogger("tornado.access").disabled = not value
 
     def setUp(self):
-        AsyncHTTPTestCase.setUp(self)
+        try:
+            self._verbose_logger(self.debug)
+            AsyncHTTPTestCase.setUp(self)
+        except Exception as exc:
+            traceback.print_tb(exc.__traceback__)
+            print("Exception", str(exc))
+            exit(1)
 
     def tearDown(self):
         AsyncHTTPTestCase.tearDown(self)
@@ -77,6 +82,7 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
             fetch_options.update(
                 {"auth_username": auth[0], "auth_password": auth[1],}
             )
+
         response = super(TornadoFunctionalTest, self).fetch(**fetch_options)
         return response
 
