@@ -10,11 +10,18 @@ You'll need bash as your shell and it works on Python 3.7+
 
 ## Install
 
-TODO
+Simply run on your virtualenv:
+
+```pip install -e git+https://github.com/aleasoluciones/infdev.git#egg=infdev```
+
+or add to your requirements-dev.txt (recommended)
+
+```-e git+https://github.com/aleasoluciones/infdev.git#egg=infdev```
+
 
 ## Usage
 
-Once the module is installed (it's recommended to be put on a requirements-dev.txt inside your project), you can simply run
+Once the module is installed, you can simply run
 
 `infdev`
 
