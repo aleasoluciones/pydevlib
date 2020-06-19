@@ -1,4 +1,4 @@
-# infdev
+# pydevlib
 
 Alea Soluciones development utils & scripts meant to be used in Python projects
 
@@ -12,18 +12,18 @@ You'll need bash as your shell and it works on Python 3.7+
 
 Simply run on your virtualenv:
 
-```pip install -e git+https://github.com/aleasoluciones/infdev.git#egg=infdev```
+```pip install -e git+https://github.com/aleasoluciones/pydevlib.git#egg=pydevlib```
 
 or add to your requirements-dev.txt (recommended)
 
-```-e git+https://github.com/aleasoluciones/infdev.git#egg=infdev```
+```-e git+https://github.com/aleasoluciones/pydevlib.git#egg=pydevlib```
 
 
 ## Usage
 
 Once the module is installed, you can simply run
 
-`infdev`
+`pydevlib`
 
 to list available commands. Actually, the commands list is:
 
@@ -56,7 +56,6 @@ For scripts that may accept arguments, you can do:
 
 ### TODO
 
-- Choose a better name for the project
 - Document virtualenv path to be searched is the default repository name
 - Document special script cases
 - Unify functional test across projects
