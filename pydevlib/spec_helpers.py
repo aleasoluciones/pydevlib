@@ -1,7 +1,7 @@
 import json
 from functools import wraps
-from deepdiff import DeepDiff
 
+from deepdiff import DeepDiff
 from expects.matchers import Matcher
 
 

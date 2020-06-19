@@ -11,7 +11,7 @@ setup(
     ),
     install_requires=[
         "six==1.12",
-        "mamba==0.10",
+        "mamba==0.11",
         "expects==0.9.0",
         "doublex==1.9.2",
         "doublex-expects==0.7.1",
