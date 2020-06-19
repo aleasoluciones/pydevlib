@@ -10,4 +10,4 @@ echo "Running Factory tests"
 echo "----------------------------------------------------------------------"
 echo
 
-python $1/infdev/factory_tests.py
+python $1/pydevlib/factory_tests.py

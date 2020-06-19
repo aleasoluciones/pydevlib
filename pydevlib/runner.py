@@ -39,7 +39,7 @@ def run(script_name, without_paths=False):
         sys.exit(1)
 
 
-def infdev():
+def pydevlib():
     print("The available commands list is:\n")
     for index, command in enumerate(COMMANDS):
         print(f"{index + 1}) {command}")
@@ -101,7 +101,7 @@ def all_tests():
 if __name__ == "__main__":
     # pylint: disable=broad-except
     try:
-        infdev()
+        pydevlib()
     except Exception:
         print(traceback.print_exc())
         sys.exit(1)

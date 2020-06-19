@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="infdev",
+    name="pydevlib",
     version="1.0.0",
     author="Bifer Team",
     description="Development tools for Alea Soluciones projects",
@@ -27,20 +27,20 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "infdev = infdev.runner:infdev",
-            "mambo = infdev.runner:mambo",
-            "git_hooks = infdev.runner:git_hooks",
-            "linter = infdev.runner:linter",
-            "yapf_formatter = infdev.runner:yapf_formatter",
-            "black_formatter = infdev.runner:black_formatter",
-            "focused_specs = infdev.runner:focused_specs",
-            "unit_tests = infdev.runner:unit_tests",
-            "integration_tests = infdev.runner:integration_tests",
-            "factory_tests = infdev.runner:factory_tests",
-            "functional_tests = infdev.runner:functional_tests",
-            "acceptance_tests = infdev.runner:acceptance_tests",
-            "local_tests = infdev.runner:local_tests",
-            "all_tests = infdev.runner:all_tests",
+            "pydevlib = pydevlib.runner:pydevlib",
+            "mambo = pydevlib.runner:mambo",
+            "git_hooks = pydevlib.runner:git_hooks",
+            "linter = pydevlib.runner:linter",
+            "yapf_formatter = pydevlib.runner:yapf_formatter",
+            "black_formatter = pydevlib.runner:black_formatter",
+            "focused_specs = pydevlib.runner:focused_specs",
+            "unit_tests = pydevlib.runner:unit_tests",
+            "integration_tests = pydevlib.runner:integration_tests",
+            "factory_tests = pydevlib.runner:factory_tests",
+            "functional_tests = pydevlib.runner:functional_tests",
+            "acceptance_tests = pydevlib.runner:acceptance_tests",
+            "local_tests = pydevlib.runner:local_tests",
+            "all_tests = pydevlib.runner:all_tests",
         ]
     },
 )
