@@ -30,9 +30,7 @@ class CallOrderAwareFake(object):
         def call_order_aware(self, decorated_method):
             @wraps(decorated_method)
             def wrapper(self, *decorated_method_args, **decorated_method_kwargs):
-                decorated_method(
-                    self, *decorated_method_args, **decorated_method_kwargs
-                )
+                decorated_method(self, *decorated_method_args, **decorated_method_kwargs)
                 decorated_method_name = decorated_method.__name__
                 responses = self._responses[decorated_method_name]
                 call_counter_for_response = self._call_counter[decorated_method_name]

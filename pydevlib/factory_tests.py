@@ -7,7 +7,6 @@ import fnmatch
 import re
 from datetime import datetime
 
-
 TOTAL_TESTS_PASSED = 0
 LAST_CALL = None
 GREEN_COLOR = "\033[0;32m"
@@ -26,10 +25,7 @@ def find_and_call_functions_from():
     for root, _, filenames in os.walk(current_working_directory):
         for filename in fnmatch.filter(filenames, "*factory.py"):
             factory_relative_path = f".{os.path.join(root, filename).replace(current_working_directory, '')}"
-            if (
-                "src" not in factory_relative_path
-                and "build" not in factory_relative_path
-            ):
+            if ("src" not in factory_relative_path and "build" not in factory_relative_path):
                 factories.append(factory_relative_path)
 
     initial_time = datetime.utcnow()
@@ -40,9 +36,7 @@ def find_and_call_functions_from():
             element = getattr(a_factory, element_name)
 
             if callable(element):
-                if isinstance(
-                    element, types.FunctionType
-                ) and not element_name.startswith("__"):
+                if isinstance(element, types.FunctionType) and not element_name.startswith("__"):
                     LAST_CALL = f"===> Exception in Factory file: {factory_file} Testing to call: {element_name}"
                     _check_function_arguments_and_call(element)
 
@@ -54,9 +48,7 @@ def find_and_call_functions_from():
 
     elapsed_time = datetime.utcnow() - initial_time
     print(f"\n{GREEN_COLOR}")
-    print(
-        f"{TOTAL_TESTS_PASSED} examples ran in {elapsed_time.total_seconds():.4f} seconds{WHITE_COLOR}"
-    )
+    print(f"{TOTAL_TESTS_PASSED} examples ran in {elapsed_time.total_seconds():.4f} seconds{WHITE_COLOR}")
 
 
 def _check_function_arguments_and_call(element):
@@ -67,16 +59,9 @@ def _check_function_arguments_and_call(element):
     all_arguments_and_local_variables_names = element.__code__.co_varnames
     arguments_with_default_value = element.__defaults__
     if arguments_with_default_value is not None:
-        required_arguments = all_arguments_and_local_variables_names[
-            : number_of_arguments - len(arguments_with_default_value)
-        ]
+        required_arguments = all_arguments_and_local_variables_names[:number_of_arguments - len(arguments_with_default_value)]
         if required_arguments:
-            element(
-                **{
-                    required_argument: "irrelevant_argument_value"
-                    for required_argument in required_arguments
-                }
-            )
+            element(**{required_argument: "irrelevant_argument_value" for required_argument in required_arguments})
         else:
             element()
     else:
@@ -86,14 +71,10 @@ def _check_function_arguments_and_call(element):
 def _import_module(module_name):
     # pylint: disable=broad-except
     try:
-        file_to_import = (
-            re.sub(r"\./.+?/", "", module_name).replace("/", ".").replace(".py", "")
-        )
+        file_to_import = (re.sub(r"\./.+?/", "", module_name).replace("/", ".").replace(".py", ""))
         return importlib.import_module(file_to_import)
     except Exception:
-        file_to_import = (
-            re.sub(r"\./", "", module_name).replace("/", ".").replace(".py", "")
-        )
+        file_to_import = (re.sub(r"\./", "", module_name).replace("/", ".").replace(".py", ""))
         return importlib.import_module(file_to_import)
     # https://stackoverflow.com/questions/4821104/python-dynamic-instantiation-from-string-name-of-a-class-in-dynamically-imported
 

@@ -7,12 +7,11 @@ fi
 
 PYTHON_FILES=$(git status --porcelain | grep "^[MCA]" | awk '$1~/^[MCA]/ && $2~/.py$/ {print $2}' | paste -sd " " -)
 if [ -n "$PYTHON_FILES" ]; then
-    #yapf_formatter $PYTHON_FILES
-    black_formatter $PYTHON_FILES
+    yapf_formatter $PYTHON_FILES
     git add $PYTHON_FILES
 fi
 
-focused_specs && linter && local_tests
+focused_specs && linter && fast_tests
 RETCODE=$?
 
 sleep 1

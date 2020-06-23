@@ -79,9 +79,10 @@ class TornadoFunctionalTest(AsyncHTTPTestCase):
             "allow_nonstandard_methods": allow_nonstandard_methods,
         }
         if auth:
-            fetch_options.update(
-                {"auth_username": auth[0], "auth_password": auth[1],}
-            )
+            fetch_options.update({
+                "auth_username": auth[0],
+                "auth_password": auth[1],
+            })
 
         response = super(TornadoFunctionalTest, self).fetch(**fetch_options)
         return response

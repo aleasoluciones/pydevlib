@@ -12,14 +12,13 @@ COMMANDS = [
     "git_hooks -> Install pre-commit and pre-push git hooks",
     "linter -> Run pylint for production and specs code",
     "yapf_formatter -> Run YAPF to format python code",
-    "black_formatter -> Run Black to format python code",
     "focused_specs -> Search focused specs across the code",
     "unit_tests -> Run unit tests",
     "factory_tests -> Run factory tests",
     "integration_tests -> Run integration tests",
     "functional_tests -> Run functional tests",
     "acceptance_tests -> Run acceptance tests",
-    "local_tests -> Run all local tests (unit, factory and integration tests)",
+    "fast_tests -> Run all fast tests (unit, factory and integration tests)",
     "all_tests -> Run all tests but acceptance tests (unit, factory, integration and functional tests",
 ]
 
@@ -62,10 +61,6 @@ def yapf_formatter():
     run(yapf_formatter.__name__)
 
 
-def black_formatter():
-    run(black_formatter.__name__)
-
-
 def focused_specs():
     run(focused_specs.__name__)
 
@@ -90,8 +85,8 @@ def acceptance_tests():
     run(acceptance_tests.__name__)
 
 
-def local_tests():
-    run(local_tests.__name__)
+def fast_tests():
+    run(fast_tests.__name__)
 
 
 def all_tests():
