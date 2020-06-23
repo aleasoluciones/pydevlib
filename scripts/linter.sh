@@ -5,6 +5,19 @@ scripts_path="$1/scripts"
 config_path="$1/config"
 source $scripts_path/shared_utils/output.sh
 
+if [ -f ".pylintrc"  ]; then
+    production_linter_config_file=".pylintrc"
+else
+    production_linter_config_file="$config_path/.pylintrc"
+fi
+
+if [ -f ".pylintrc-mamba"  ]; then
+    specs_linter_config_file=".pylintrc-mamba"
+else
+    specs_linter_config_file="$config_path/.pylintrc-mamba"
+fi
+
+
 echo
 echo "----------------------------------------------------------------------"
 echo "Running Python linter: pylint"
@@ -18,7 +31,7 @@ if [ -z "$2"  ]; then
     if [[ $files ]]; then
         info "Analizing PRODUCTION code..."
 
-        output=$(pylint --rcfile $config_path/.pylintrc ${files})
+        output=$(pylint --rcfile $production_linter_config_file ${files})
         retcode=$?
         exit_on_fatal_or_error $retcode "$output"
     else
@@ -29,7 +42,7 @@ if [ -z "$2"  ]; then
     spec_files=$(find . -type f -name "*spec.py")
     if [[ $spec_files ]]; then
       info "Analizing SPECS code..."
-      output=$(pylint --rcfile $config_path/.pylintrc-mamba ${spec_files})
+      output=$(pylint --rcfile $specs_linter_config_file ${spec_files})
       retcode=$?
       exit_on_fatal_or_error $retcode "$output"
     else
@@ -46,7 +59,7 @@ elif [ $2 = "staged" ]; then
         source_files=$(echo $staged_files | grep -v 'spec')
         if [[ $source_files ]]; then
           info 'Analizing git staged PRODUCTION code...'
-          output=$(pylint --rcfile $config_path/.pylintrc $source_files)
+          output=$(pylint --rcfile $production_linter_config_file $source_files)
           retcode=$?
           exit_on_fatal_or_error $retcode "$output"
         fi ;
@@ -54,7 +67,7 @@ elif [ $2 = "staged" ]; then
         spec_files=$(echo $staged_files | grep 'spec')
         if [[ $spec_files ]]; then
           info "Analizing git staged SPECS code..."
-          output=$(pylint --rcfile $config_path/.pylintrc-mamba ${spec_files})
+          output=$(pylint --rcfile $specs_linter_config_file ${spec_files})
           retcode=$?
           exit_on_fatal_or_error $retcode "$output"
         fi
