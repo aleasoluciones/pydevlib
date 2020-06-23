@@ -3,6 +3,16 @@
 
 scripts_path="$1/scripts"
 source $scripts_path/shared_utils/clean_pyc_files.sh
+SPEC_PATTERN="acceptance_specs"
+SEARCH_PATH="."
+IGNORE_PATH="systems"
+SPEC_FILES=$(find $SEARCH_PATH -maxdepth 2 -type d -name $SPEC_PATTERN | grep -v $IGNORE_PATH)
+SPEC_FILES_RETCODE=$?
+
+if [ $SPEC_FILES_RETCODE = 1 ]; then
+    exit
+fi
+
 
 echo
 echo "----------------------------------------------------------------------"
@@ -10,10 +20,6 @@ echo "Running Acceptance Specs"
 echo "----------------------------------------------------------------------"
 echo
 
-SPEC_PATTERN="acceptance_specs"
-SEARCH_PATH="."
-IGNORE_PATH="systems"
-SPEC_FILES=$(find $SEARCH_PATH -maxdepth 2 -type d -name $SPEC_PATTERN | grep -v $IGNORE_PATH)
 
 if [ -z "$2"  ]; then
     FORMATTER="progress"
