@@ -64,3 +64,4 @@ Simply clone this repository and run
 - Document virtualenv path to be searched is the default repository name
 - Document special script cases
 - Unify functional test across projects
+- Add a command to list the installed python development libraries with a link to documentation
