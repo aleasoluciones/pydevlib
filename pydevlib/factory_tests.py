@@ -58,7 +58,7 @@ def _check_function_arguments_and_call(element):
     number_of_arguments = element.__code__.co_argcount
     all_arguments_and_local_variables_names = element.__code__.co_varnames
     arguments_with_default_value = element.__defaults__ if element.__defaults__ else []
-    if arguments_with_default_value is not None or arguments:
+    if arguments_with_default_value is not None:
         required_arguments = all_arguments_and_local_variables_names[:number_of_arguments - len(arguments_with_default_value)]
         if required_arguments:
             element(**{required_argument: "irrelevant_argument_value" for required_argument in required_arguments})
