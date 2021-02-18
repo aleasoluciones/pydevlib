@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pydevlib",
-    version="1.0.1",
+    version="1.0.2",
     author="Bifer Team",
     description="Development tools for Alea Soluciones projects",
     platforms="Linux",
