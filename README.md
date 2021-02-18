@@ -31,6 +31,7 @@ to list available commands. Actually, the commands list is:
 mambo -> Alias for mamba -f documentation
 git_hooks -> Install pre-commit and pre-push git hooks
 linter -> Run pylint for production and specs code
+type_checker -> Run MyPY for production and specs code to perform static type checking
 yapf_formatter -> Run YAPF to format python code
 focused_specs -> Search for focused specs across the code
 unit_tests -> Run unit tests
