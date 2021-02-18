@@ -21,6 +21,7 @@ setup(
         "coverage==5.4",
         "pylint==2.6.0",
         "yapf==0.30.0",
+        "mypy==0.800",
     ],
     entry_points={
         "console_scripts": [
@@ -28,6 +29,7 @@ setup(
             "mambo = pydevlib.runner:mambo",
             "git_hooks = pydevlib.runner:git_hooks",
             "linter = pydevlib.runner:linter",
+            "type_checker = pydevlib.runner:type_checker",
             "yapf_formatter = pydevlib.runner:yapf_formatter",
             "focused_specs = pydevlib.runner:focused_specs",
             "unit_tests = pydevlib.runner:unit_tests",

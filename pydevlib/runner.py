@@ -11,6 +11,7 @@ COMMANDS = [
     "mambo -> Alias for mamba -f documentation",
     "git_hooks -> Install pre-commit and pre-push git hooks",
     "linter -> Run pylint for production and specs code",
+    "type_checker -> Run MyPY for production and specs code to perform static type checking",
     "yapf_formatter -> Run YAPF to format python code",
     "focused_specs -> Search focused specs across the code",
     "unit_tests -> Run unit tests",
@@ -57,6 +58,10 @@ def linter():
     run(linter.__name__)
 
 
+def type_checker():
+    run(type_checker.__name__)
+
+
 def yapf_formatter():
     run(yapf_formatter.__name__)
 
@@ -98,5 +103,5 @@ if __name__ == "__main__":
     try:
         pydevlib()
     except Exception:
-        print(traceback.print_exc())
+        traceback.print_exc()
         sys.exit(1)
