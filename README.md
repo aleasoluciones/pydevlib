@@ -49,6 +49,7 @@ The way you can use the commands is simply like this:
 
 For scripts that may accept arguments, you can do:
 
+`linter staged`
 `yapf_formatter your_file another_file`
 `unit_tests doc`
 

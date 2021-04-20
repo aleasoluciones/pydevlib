@@ -1,2 +1,5 @@
 [MESSAGES CONTROL]
 disable=missing-docstring, line-too-long, no-self-use, too-few-public-methods, no-member, duplicate-code, invalid-name, redefined-outer-name, too-many-arguments, unnecessary-lambda, too-many-instance-attributes, fixme, bad-continuation, function-redefined
+
+[MASTER]
+ignore=.vscode, migrations

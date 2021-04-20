@@ -4,3 +4,6 @@ disable=missing-docstring, line-too-long, no-self-use, too-few-public-methods, n
 
 [BASIC]
 #good-names=id
+
+[MASTER]
+ignore=.vscode, migrations

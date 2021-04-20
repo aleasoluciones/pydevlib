@@ -11,7 +11,7 @@ if [ -n "$PYTHON_FILES" ]; then
     git add $PYTHON_FILES
 fi
 
-focused_specs && linter && fast_tests
+focused_specs && linter staged && fast_tests
 RETCODE=$?
 
 sleep 1

@@ -8,7 +8,6 @@ setup(
     platforms="Linux",
     packages=find_packages(exclude=["tests", "specs", "integration_specs", "functional_specs", "acceptance_specs"]),
     install_requires=[
-        "six==1.15",
         "mamba==0.11.2",
         "expects==0.9.0",
         "doublex==1.9.3",
