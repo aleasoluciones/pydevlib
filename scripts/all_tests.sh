@@ -3,5 +3,6 @@
 
 unit_tests &&\
 integration_tests &&\
+regression_tests &&\
 factory_tests &&\
 functional_tests

@@ -39,6 +39,7 @@ factory_tests -> Run factory tests
 integration_tests -> Run integration tests
 functional_tests -> Run functional tests
 acceptance_tests -> Run acceptance tests
+regression_tests -> Run regression tests
 fast_tests -> Run all fast tests (unit, factory and integration tests)
 all_tests -> Run all tests but acceptance tests (unit, factory, integration and functional tests)
 ```

@@ -33,6 +33,7 @@ setup(
             "focused_specs = pydevlib.runner:focused_specs",
             "unit_tests = pydevlib.runner:unit_tests",
             "integration_tests = pydevlib.runner:integration_tests",
+            "regression_tests = pydevlib.runner:regression_tests",
             "factory_tests = pydevlib.runner:factory_tests",
             "functional_tests = pydevlib.runner:functional_tests",
             "acceptance_tests = pydevlib.runner:acceptance_tests",

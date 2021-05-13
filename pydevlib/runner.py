@@ -17,6 +17,7 @@ COMMANDS = [
     "unit_tests -> Run unit tests",
     "factory_tests -> Run factory tests",
     "integration_tests -> Run integration tests",
+    "regression_tests -> Run regression tests",
     "functional_tests -> Run functional tests",
     "acceptance_tests -> Run acceptance tests",
     "fast_tests -> Run all fast tests (unit, factory and integration tests)",
@@ -88,6 +89,10 @@ def functional_tests():
 
 def acceptance_tests():
     run(acceptance_tests.__name__)
+
+
+def regression_tests():
+    run(regression_tests.__name__)
 
 
 def fast_tests():
