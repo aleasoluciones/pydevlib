@@ -15,12 +15,12 @@ setup(
         "httmock==1.4.0",
         "pyDoubles==1.8.1",
         "PyHamcrest==2.0.2",
-        "Faker==6.0.0",
-        "deepdiff==5.2.2",
-        "coverage==5.4",
-        "pylint==2.6.0",
-        "yapf==0.30.0",
-        "mypy==0.800",
+        "Faker==8.1.3",
+        "deepdiff==5.5.0",
+        "coverage==5.5",
+        "pylint==2.8.2",
+        "yapf==0.31.0",
+        "mypy==0.812",
     ],
     entry_points={
         "console_scripts": [
