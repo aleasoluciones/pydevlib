@@ -1,4 +1,5 @@
 import json
+import datetime
 from functools import wraps
 
 from deepdiff import DeepDiff
@@ -21,6 +22,18 @@ class equal_json_dict(Matcher):
             return True, ["json contains the dict"]
 
         return False, ["json does not contain the dict"]
+
+
+class be_datetime(Matcher):
+    def __init__(self, format='%Y-%m-%d %H:%M:%S'):
+        self._format = format
+
+    def _match(self, subject):
+        date_time_obj = datetime.datetime.strptime(subject, self._format)
+        if date_time_obj:
+            return True, ['date time found']
+        return False, ['date time not found']
+
 
 
 # Fake classes
