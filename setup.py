@@ -18,9 +18,9 @@ setup(
         "Faker==8.1.3",
         "deepdiff==5.5.0",
         "coverage==5.5",
-        "pylint==2.8.2",
+        "pylint==2.11.1",
         "yapf==0.31.0",
-        "mypy==0.812",
+        "mypy==0.910",
     ],
     entry_points={
         "console_scripts": [
