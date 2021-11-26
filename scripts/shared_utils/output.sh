@@ -2,7 +2,7 @@
 
 COLOR_FOR_BASH=\\e
 
-if (( $(uname) == 'Darwin' )); then
+if [[ $(uname) == 'Darwin' ]]; then
     COLOR_FOR_BASH=\\x1B
 fi
 
