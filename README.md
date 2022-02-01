@@ -1,29 +1,34 @@
 # pydevlib
 
-Alea Soluciones development utils & scripts meant to be used in Python projects
+![Python versions supported](https://img.shields.io/badge/supports%20python-3.7%20|%203.8%20|%203.9-blue.svg)
 
+Alea Soluciones' development utils & scripts meant to be used in Python 3 projects.
 
 ## Requirements
 
-You'll need bash as your shell and it works on Python 3.7+
-
+You'll need bash as your shell.
 
 ## Install
 
-Simply run on your virtualenv:
+Simply run this on your virtualenv:
 
-```pip install -e git+https://github.com/aleasoluciones/pydevlib.git#egg=pydevlib```
+```
+pip install -e git+https://github.com/aleasoluciones/pydevlib.git#egg=pydevlib
+```
 
-or add to your requirements-dev.txt (recommended)
+or add this to your requirements-dev.txt (recommended) to make it persistent:
 
-```-e git+https://github.com/aleasoluciones/pydevlib.git#egg=pydevlib```
-
+```
+-e git+https://github.com/aleasoluciones/pydevlib.git#egg=pydevlib
+```
 
 ## Usage
 
 Once the module is installed, you can simply run
 
-`pydevlib`
+```
+pydevlib
+```
 
 to list available commands. Actually, the commands list is:
 
@@ -32,7 +37,7 @@ mambo -> Alias for mamba -f documentation
 git_hooks -> Install pre-commit and pre-push git hooks
 linter -> Run pylint for production and specs code
 type_checker -> Run MyPY for production and specs code to perform static type checking
-yapf_formatter -> Run YAPF to format python code
+formatter -> Run Black to format python code
 focused_specs -> Search for focused specs across the code
 unit_tests -> Run unit tests
 factory_tests -> Run factory tests
@@ -46,21 +51,25 @@ all_tests -> Run all tests but acceptance tests (unit, factory, integration and 
 
 The way you can use the commands is simply like this:
 
-`git_hooks`
+```
+git_hooks
+```
 
 For scripts that may accept arguments, you can do:
 
-`linter staged`
-`yapf_formatter your_file another_file`
-`unit_tests doc`
-
+```
+linter staged
+formatter your_file another_file
+unit_tests doc
+```
 
 ## Development
 
-Simply clone this repository and run
+Simply clone this repository and run the following in a virtual environment:
 
-```dev/setup_venv.sh```
-
+```
+dev/setup_venv.sh
+```
 
 ### TODO
 

@@ -8,14 +8,14 @@ source $scripts_path/shared_utils/output.sh
 
 echo
 echo "----------------------------------------------------------------------"
-echo "Running YAPF formatter on Python files"
+echo "Running Black formatter on Python files"
 echo "----------------------------------------------------------------------"
 echo
 
 if [ -z "$2" ]; then
-    yapf -ir --style $config_path/.style.yapf .
+    black .
 else
-    yapf -ir --style $config_path/.style.yapf $@
+    black $@
 fi
 
-info "YAPF formatting applied"
+info "Black formatting applied"

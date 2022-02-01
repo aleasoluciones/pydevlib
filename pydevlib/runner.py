@@ -12,7 +12,7 @@ COMMANDS = [
     "git_hooks -> Install pre-commit and pre-push git hooks",
     "linter -> Run pylint for production and specs code",
     "type_checker -> Run MyPY for production and specs code to perform static type checking",
-    "yapf_formatter -> Run YAPF to format python code",
+    "formatter -> Run Black to format python code",
     "focused_specs -> Search focused specs across the code",
     "unit_tests -> Run unit tests",
     "factory_tests -> Run factory tests",
@@ -63,8 +63,8 @@ def type_checker():
     run(type_checker.__name__)
 
 
-def yapf_formatter():
-    run(yapf_formatter.__name__)
+def formatter():
+    run(formatter.__name__)
 
 
 def focused_specs():

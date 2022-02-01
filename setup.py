@@ -19,7 +19,7 @@ setup(
         "deepdiff==5.7.0",
         "coverage==6.2",
         "pylint==2.12.2",
-        "yapf==0.32.0",
+        "black==22.1.0",
         "mypy==0.931",
     ],
     entry_points={
@@ -29,7 +29,7 @@ setup(
             "git_hooks = pydevlib.runner:git_hooks",
             "linter = pydevlib.runner:linter",
             "type_checker = pydevlib.runner:type_checker",
-            "yapf_formatter = pydevlib.runner:yapf_formatter",
+            "formatter = pydevlib.runner:formatter",
             "focused_specs = pydevlib.runner:focused_specs",
             "unit_tests = pydevlib.runner:unit_tests",
             "integration_tests = pydevlib.runner:integration_tests",
