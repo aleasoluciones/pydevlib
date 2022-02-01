@@ -21,6 +21,7 @@ setup(
         "pylint==2.12.2",
         "black==22.1.0",
         "mypy==0.931",
+        "ipython==8.0.1",
     ],
     entry_points={
         "console_scripts": [
