@@ -24,14 +24,14 @@ echo
 
 if [ -z "$2"  ]; then
     FORMATTER="progress"
-    mamba -f $FORMATTER $SPEC_FILES;
+    mamba -f $FORMATTER $SPEC_FILES --enable-coverage;
 elif [ $2 = "doc" ]; then
     FORMATTER="documentation"
-    mamba -f $FORMATTER $SPEC_FILES;
+    mamba -f $FORMATTER $SPEC_FILES --enable-coverage;
 elif [ $2 = "debug" ]; then
     for f in $SPEC_FILES; do
         echo "$f ..."
-        mamba $f
+        mamba $f --enable-coverage
     done;
 fi
 
