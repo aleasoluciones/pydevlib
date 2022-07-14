@@ -18,7 +18,7 @@ setup(
         "Faker==11.3.0",
         "deepdiff==5.7.0",
         "coverage==6.3",
-        "pylint==2.12.2",
+        "pylint==2.14.4",
         "black==22.1.0",
         "mypy==0.931",
         "ipython==7.31.1",
