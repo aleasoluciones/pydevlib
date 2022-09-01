@@ -22,6 +22,7 @@ setup(
         "black==22.1.0",
         "mypy==0.931",
         "ipython==7.31.1",
+        "ropevim==0.8.1",
     ],
     entry_points={
         "console_scripts": [
