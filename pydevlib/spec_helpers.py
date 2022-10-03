@@ -2,6 +2,7 @@ import json
 import datetime
 import ast
 import inspect
+from pprint import pprint
 from functools import wraps
 
 from deepdiff import DeepDiff
@@ -10,7 +11,7 @@ from expects.matchers import Matcher
 
 # Debugging utils
 def printdiff(obj1, obj2):
-    print(DeepDiff(obj1, obj2))
+    pprint(DeepDiff(obj1, obj2), indent=2)
 
 
 # Custom expect matchers
