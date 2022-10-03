@@ -1,6 +1,5 @@
 import json
 import datetime
-import ast
 import inspect
 from pprint import pprint
 from functools import wraps
@@ -23,7 +22,6 @@ class equal_json_dict(Matcher):
         input_dict = json.loads(input_json)
         if input_dict == self._expected:
             return True, ["json contains the dict"]
-
         return False, ["json does not contain the dict"]
 
 
@@ -46,8 +44,7 @@ class have_decorator(Matcher):
         decorators = self._get_method_decorators(function)
         if self._expected in decorators:
             return True, ['decorator found']
-        else:
-            return False, [f"{self._expected} decorator not found in {decorators}"]
+        return False, [f"{self._expected} decorator not found in {decorators}"]
 
     def _get_method_decorators(self, func):
         function_source = inspect.getsource(func)
