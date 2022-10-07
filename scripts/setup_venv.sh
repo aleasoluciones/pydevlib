@@ -1,25 +1,26 @@
 #!/bin/bash
 
+install_dependencies () {
+    if [ -e $1 ]; then
+        echo "Installing $1 dependencies"
+        python -m pip install --upgrade -r $1
+    fi
+}
+
 if [ -z "$VIRTUAL_ENV" ]; then
     echo "You need to be on a virtual environment to install dev dependencies"
 else
     python -m pip install --upgrade pip wheel setuptools
 
-    if [ -e requirements-versioned.txt ]; then
-        python -m pip install --upgrade -r requirements-versioned.txt
-    fi
-    if [ -e requirements-git.txt ]; then
-        python -m pip install --upgrade -r requirements-git.txt
-    fi
-    if [ -e requirements-dev.txt ]; then
-        python -m pip install --upgrade -r requirements-dev.txt
-    fi
-    if [ -e requirements.txt ]; then
-        python -m pip install --upgrade -r requirements.txt
-    fi
+    install_dependencies requirements-versioned.txt
+    install_dependencies requirements-git.txt
+    install_dependencies requirements-dev.txt
+    install_dependencies requirements.txt
 
+    echo "Installing local package"
     python -m pip install --upgrade -e .
 
+    echo "Installing modules"
     for package in $(ls -d */); do pushd $package; if [ -e setup.py ]; then python -m pip install --upgrade -e .; fi; popd; done
 
     git_hooks
