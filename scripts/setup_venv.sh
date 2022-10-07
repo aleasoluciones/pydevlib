@@ -21,6 +21,6 @@ else
     python -m pip install --upgrade -e .
 
     for package in $(ls -d */); do pushd $package; if [ -e setup.py ]; then python -m pip install --upgrade -e .; fi; popd; done
-fi
 
-git_hooks
+    git_hooks
+fi
