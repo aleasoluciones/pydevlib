@@ -17,11 +17,6 @@ else
     install_dependencies requirements-dev.txt
     install_dependencies requirements.txt
 
-    echo "Installing local package"
-    if [ -e setup.py ]; then
-        python -m pip install --upgrade -e .
-    fi
-
     echo "Installing modules"
     for package in $(ls -d */); do pushd $package; if [ -e setup.py ]; then python -m pip install --upgrade -e .; fi; popd; done
 
