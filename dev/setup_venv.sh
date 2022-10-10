@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python -m pip install --upgrade -e .
+curl -s https://raw.githubusercontent.com/aleasoluciones/pydevlib/master/scripts/setup_venv.sh | bash
