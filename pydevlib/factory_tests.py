@@ -82,6 +82,7 @@ def _import_module(module_name):
 if __name__ == "__main__":
     # pylint: disable=broad-except
     try:
+        sys.path.append(os.getcwd())
         find_and_call_functions_from()
         sys.exit(0)
     except Exception as exc:
