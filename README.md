@@ -1,6 +1,6 @@
 # pydevlib
 
-![Python versions supported](https://img.shields.io/badge/supports%20python-3.7%20|%203.8%20|%203.9-blue.svg)
+![Python versions supported](https://img.shields.io/badge/supports%20python-3.7%20|%203.8%20|%203.9|%203.10|%203.11-blue.svg)
 
 Alea Soluciones' development utils & scripts meant to be used in Python 3 projects.
 
