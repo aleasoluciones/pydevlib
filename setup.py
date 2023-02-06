@@ -10,7 +10,7 @@ setup(
     install_requires=[
         "mamba==0.11.2",
         "expects==0.9.0",
-        "doublex",
+        "doublex==1.9.5.1",
         "doublex-expects==0.7.1",
         "httmock==1.4.0",
         "pyDoubles==1.8.1",
@@ -24,7 +24,7 @@ setup(
         "ipython==7.31.1",
         "ropevim==0.8.1",
     ],
-    dependency_links = ['git+https://github.com/davidvilla/python-doublex@0ccbe65c8574169d8b723c1ef29bcbe3f2e98c20#egg=doublex'],
+    dependency_links = ['git+https://github.com/davidvilla/python-doublex@0ccbe65c8574169d8b723c1ef29bcbe3f2e98c20#egg=doublex-1.9.5.1'],
     entry_points={
         "console_scripts": [
             "pydevlib = pydevlib.runner:pydevlib",
