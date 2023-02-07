@@ -17,7 +17,7 @@ setup(
         "PyHamcrest==2.0.3",
         "Faker==11.3.0",
         "deepdiff==5.7.0",
-        "coverage==6.3",
+        "coverage==7.1.0",
         "pylint==2.14.4",
         "black==22.1.0",
         "mypy==0.931",
