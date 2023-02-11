@@ -21,7 +21,7 @@ setup(
         "pylint==2.14.4",
         "black==22.1.0",
         "mypy==0.931",
-        "ipython==7.31.1",
+        "ipython==8.10.0",
         "ropevim==0.8.1",
     ],
     entry_points={
