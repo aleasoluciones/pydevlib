@@ -27,19 +27,18 @@ echo
 if [ -z "$2"  ]; then
     FORMATTER="progress"
     mamba -f $FORMATTER $SPEC_FILES --enable-coverage;
-    coverage lcov --data-file=$COVERAGE_OUTPUT_FILE -o $COVERAGE_LCOV_OUTPUT_FILE 2>&1 1>/dev/null
 elif [ $2 = "doc" ]; then
     FORMATTER="documentation"
     mamba -f $FORMATTER $SPEC_FILES --enable-coverage;
-    coverage lcov --data-file=$COVERAGE_OUTPUT_FILE -o $COVERAGE_LCOV_OUTPUT_FILE 2>&1 1>/dev/null
 elif [ $2 = "debug" ]; then
     for f in $SPEC_FILES; do
         echo "$f ..."
         mamba $f --enable-coverage
-        coverage lcov --data-file=$COVERAGE_OUTPUT_FILE -o $COVERAGE_LCOV_OUTPUT_FILE 2>&1 1>/dev/null
     done;
 fi
 
 MAMBA_RETCODE=$?
+
+coverage lcov --data-file=$COVERAGE_OUTPUT_FILE -o $COVERAGE_LCOV_OUTPUT_FILE 2>&1 1>/dev/null
 
 exit $MAMBA_RETCODE
