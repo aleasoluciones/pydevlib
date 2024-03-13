@@ -19,7 +19,7 @@ setup(
         "deepdiff==5.7.0",
         "coverage==7.1.0",
         "pylint==3.0.3",
-        "black==22.1.0",
+        "black==24.2.0",
         "mypy==0.931",
         "ipython==7.31.1",
         "ropevim==0.8.1",
