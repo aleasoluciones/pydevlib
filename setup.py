@@ -20,7 +20,7 @@ setup(
         "coverage==7.1.0",
         "pylint==3.0.3",
         "black==24.2.0",
-        "mypy==0.931",
+        "mypy==1.9.0",
         "ipython==7.31.1",
         "ropevim==0.8.1",
     ],
