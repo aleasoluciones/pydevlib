@@ -23,7 +23,7 @@ else
     fi
 
     echo "Installing modules"
-    for package in $(ls -d */); do pushd $package; if [ -e setup.py ]; then python -m pip install --upgrade -e .; fi; popd; done
+    for package in $(ls -d */); do pushd $package; if [ -e setup.py ] || [ -e pyproject.toml ] ; then python -m pip install --upgrade -e .; fi; popd; done
 
     git_hooks
 fi
