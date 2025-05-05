@@ -3,7 +3,7 @@
 install_dependencies () {
     if [ -e $1 ]; then
         echo "Installing $1 dependencies"
-        python -m pip install --use-pep517 --upgrade -r $1
+        python -m pip install --upgrade -r $1
     fi
 }
 
@@ -19,11 +19,11 @@ else
 
     echo "Installing local package"
     if [ -e setup.py ]; then
-        python -m pip install --use-pep517 --upgrade -e .
+        python -m pip install --upgrade -e .
     fi
 
     echo "Installing modules"
-    for package in $(ls -d */); do pushd $package; if [ -e setup.py ]; then python -m pip install --use-pep517 --upgrade -e .; fi; popd; done
+    for package in $(ls -d */); do pushd $package; if [ -e setup.py ]; then python -m pip install --upgrade -e .; fi; popd; done
 
     git_hooks
 fi
