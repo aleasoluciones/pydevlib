@@ -10,7 +10,7 @@ install_dependencies () {
 if [ -z "$VIRTUAL_ENV" ]; then
     echo "You need to be on a virtual environment to install dev dependencies"
 else
-    python -m pip install --upgrade pip wheel setuptools
+    python -m pip install pip==25.0.1 setuptools==75.8.0 wheel==0.45.1
 
     install_dependencies requirements-versioned.txt
     install_dependencies requirements-git.txt
