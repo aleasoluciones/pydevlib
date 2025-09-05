@@ -18,7 +18,7 @@ dependencies = [
     "pyDoubles==1.8.1",
     "PyHamcrest==2.1.0",
     "Faker==24.11.0",
-    "deepdiff==7.0.1",
+    "deepdiff==8.6.1",
     "coverage==7.4.4",
     "pylint==3.1.0",
     "black==24.4.0",
