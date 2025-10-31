@@ -40,6 +40,6 @@ fi
 
 MAMBA_RETCODE=$?
 
-coverage lcov --data-file=$COVERAGE_OUTPUT_FILE -o $COVERAGE_LCOV_OUTPUT_FILE 2>&1 1>/dev/null
+coverage lcov --ignore-errors --data-file=$COVERAGE_OUTPUT_FILE -o $COVERAGE_LCOV_OUTPUT_FILE 2>&1 1>/dev/null
 
 exit $MAMBA_RETCODE
