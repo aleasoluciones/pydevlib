@@ -21,11 +21,12 @@ def find_and_call_functions_from():
 
     factories = []
     current_working_directory = os.getcwd()
+    excluded_dirs = ("src", "build", ".trees")
 
     for root, _, filenames in os.walk(current_working_directory):
         for filename in fnmatch.filter(filenames, "*factory.py"):
             factory_relative_path = f".{os.path.join(root, filename).replace(current_working_directory, '')}"
-            if ("src" not in factory_relative_path and "build" not in factory_relative_path):
+            if not any(excluded_dir in factory_relative_path for excluded_dir in excluded_dirs):
                 factories.append(factory_relative_path)
 
     initial_time = datetime.utcnow()
