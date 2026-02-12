@@ -18,7 +18,7 @@ else
     install_dependencies requirements.txt
 
     echo "Installing local package"
-    if [ -e setup.py ]; then
+    if [ -e "setup.py" ] || [ -e "pyproject.toml" ]; then
         python -m pip install --upgrade -e .
     fi
 
